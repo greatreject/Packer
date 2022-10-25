@@ -1,0 +1,41 @@
+{
+  "builders": [{
+    "vnc_over_websocket": true,
+	"insecure_connection": true,
+    "name": "ubuntu-2004-base",
+    "vm_name": "ubuntu-2004-base",
+    "type": "vmware-iso",
+    "guest_os_type": "ubuntu-64",
+    "tools_upload_flavor": "linux",
+    "headless": false,
+
+    "iso_url": "https://releases.ubuntu.com/focal/ubuntu-20.04.4-live-server-amd64.iso",
+    "iso_checksum": "sha256:28ccdb56450e643bad03bb7bcf7507ce3d8d90e8bf09e38f6bd9ac298a98eaad",
+
+    "ssh_username": "nullgrid",
+    "ssh_password": "nullgrid",
+    "ssh_timeout": "15m",
+
+    "disk_type_id": "thin",
+	"skip_export": "true",
+
+    "boot_command": [
+      "<enter><enter><f6><esc><wait> ",
+        "autoinstall ds=nocloud-net;seedfrom=http://{{ .HTTPIP }}:{{ .HTTPPort }}/",
+        "<enter><wait>"
+    ],
+
+    "shutdown_command": "echo 'shutdown -P now' > shutdown.sh; echo 'nullgrid'|sudo -S sh 'shutdown.sh'",
+
+    "remote_type": "esx5",
+    "remote_host": "{{user `esxi_host`}}",
+    "remote_datastore": "{{user `esxi_datastore`}}",
+    "remote_username": "{{user `esxi_username`}}",
+    "remote_password": "{{user `esxi_password`}}",
+    "keep_registered": true,
+
+    "vmx_data": {
+      "ethernet0.networkName": "VM Network"
+    }
+  }]
+}

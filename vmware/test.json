@@ -1,0 +1,50 @@
+{
+  "builders": [
+    {
+	  "vnc_over_websocket": true,
+	  "insecure_connection": true,
+      "type": "vmware-iso",
+
+      "guest_os_type": "ubuntu-64",
+      "memory": 1024,
+      "name": "ubuntu-20.04-live-server",
+      "iso_urls": [
+        "iso/ubuntu-20.04.4-live-server-amd64.iso",
+        "https://releases.ubuntu.com/20.04/ubuntu-20.04.4-live-server-amd64.iso"
+      ],
+      "iso_checksum": "sha256:28ccdb56450e643bad03bb7bcf7507ce3d8d90e8bf09e38f6bd9ac298a98eaad",
+
+      "http_directory": "subiquity/http",
+      "output_directory": "output/live-server",
+	  "skip_export": "true",
+
+      "boot_wait": "5s",
+      "boot_command": [
+        "<enter><enter><f6><esc><wait> ",
+        "autoinstall ds=nocloud-net;seedfrom=http://{{ .HTTPIP }}:{{ .HTTPPort }}/",
+        "<enter><wait>"
+      ],
+      "shutdown_command": "shutdown -P now",
+	  
+	  "remote_type": "esx5",
+      "remote_host": "{{user `esxi_host`}}",
+      "remote_datastore": "{{user `esxi_datastore`}}",
+      "remote_username": "{{user `esxi_username`}}",
+      "remote_password": "{{user `esxi_password`}}",
+      "keep_registered": true,
+
+      "ssh_username": "ubuntu",
+      "ssh_password": "ubuntu",
+      "ssh_pty": true,
+      "ssh_timeout": "20m",
+      "ssh_handshake_attempts": "20"
+    }
+  ],
+
+  "provisioners": [
+    {
+      "type": "shell",
+      "inline": ["ls /"]
+    }
+  ]
+}
