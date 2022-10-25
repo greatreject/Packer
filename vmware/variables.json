@@ -2,5 +2,5 @@
   "esxi_host": "vmware.flakie.org",
   "esxi_datastore": "datastore1",
   "esxi_username": "root",
-  "esxi_password": "Compu1er!"
+  "esxi_password": "password here"
 }
