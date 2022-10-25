@@ -1,0 +1,24 @@
+{
+  "vm-name": "Ubuntu1804",
+    
+  "vcenter-server":"192.168.1.201",
+  "vcenter-username":"administrator@vsphere.local",
+  "vcenter-password":"Compu1er!",
+  
+  "datacenter": "Home Datacenter",
+  "datastore": "datastore1",
+  "folder": "Workloads",
+  "cluster": "Cluster",
+  "network": "VM Network",
+  
+  "vm-cpu-num": "1",
+  "vm-mem-size": "1024",
+  "vm-disk-size": "10240",
+    
+  "ssh-username": "kopicloud",
+  "ssh-password": "kopicloud",
+  
+  "iso-url": "http://cdimage.ubuntu.com/releases/18.04/release/ubuntu-18.04.6-server-amd64.iso",
+  "iso-checksum": "f5cbb8104348f0097a8e513b10173a07dbc6684595e331cb06f93f385d0aecf6",
+  "iso-checksum-type": "sha256"
+}
