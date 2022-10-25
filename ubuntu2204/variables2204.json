@@ -1,7 +1,7 @@
 {
     "vsphere-server": "192.168.1.201",
     "vsphere-user": "administrator@vsphere.local",
-    "vsphere-password": "Compu1er!",
+    "vsphere-password": "password here",
     
     "vsphere-datacenter": "Home Datacenter",
     "vsphere-cluster": "Cluster",
