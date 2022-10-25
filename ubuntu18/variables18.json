@@ -3,7 +3,7 @@
     
   "vcenter-server":"192.168.1.201",
   "vcenter-username":"administrator@vsphere.local",
-  "vcenter-password":"Compu1er!",
+  "vcenter-password":"password here",
   
   "datacenter": "Home Datacenter",
   "datastore": "datastore1",
